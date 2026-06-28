@@ -2,184 +2,738 @@
 <html lang="es">
 
 <head>
-    <meta charset="utf-8">
-    <title>Mundo MARVEL</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mundo Marvel — Personajes, habilidades, armas y trivia del Universo Marvel.">
+    <title>Mundo MARVEL ⚡</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="MARVEL.css">
-
 </head>
 
-
 <body>
-    <main>
-        <h1 class="marvel-title-general"> Bienvenido al maravilloso mundo de
-            <Span class="marvel-logo"><strong>MARVEL</strong></Span> </h1>
-        <section>
 
-            <h2 class="Sans-Serif"> Aqui veremos: personajes, habilidades, armas de los personajes, etc... </h2>
+    <!-- ══ NAVBAR ══════════════════════════════════════════ -->
+    <header class="navbar">
+        <div class="nav-inner">
+            <span class="nav-logo">⚡ MARVEL</span>
+            <nav class="nav-links">
+                <a href="#personajes">Personajes</a>
+                <a href="#armas">Armas</a>
+                <a href="#habilidades">Habilidades</a>
+                <a href="#trivia">Trivia</a>
+                <a href="#equipo">Equipos</a>
+            </nav>
+            <button class="hamburger" onclick="toggleNav()">☰</button>
+        </div>
+    </header>
 
-            <p> <span class="coment">Todas las personas aman a
+    <!-- ══ HERO ════════════════════════════════════════════ -->
+    <section class="hero" id="inicio">
+        <div class="hero-particles" id="particles"></div>
+        <div class="hero-content">
+            <p class="hero-eyebrow">Bienvenido al maravilloso mundo de</p>
+            <h1 class="hero-titulo">
+                <span class="marvel-logo-text">MARVEL</span>
+            </h1>
+            <p class="hero-sub">Héroes, villanos, armas legendarias y poderes imposibles.<br>Todo el UCM en un solo lugar.</p>
+            <div class="hero-btns">
+                <button class="btn-rojo" onclick="document.getElementById('personajes').scrollIntoView({behavior:'smooth'})">
+          Explorar personajes
+        </button>
+                <a href="https://www.marvel.com/" target="_blank" class="btn-outline">Marvel oficial ↗</a>
+            </div>
+        </div>
+        <div class="hero-gif-wrap">
+            <img src="https://usagif.com/wp-content/uploads/gifs/gif-marvel-91.gif" alt="Los héroes más poderosos del planeta" class="hero-gif">
+            <div class="hero-gif-glow"></div>
+        </div>
+    </section>
 
-                <a href="https://i.pinimg.com/originals/e3/56/37/e35637dd0c23169096c7e6bc574d39bc.gif"> <strong>MARVEL STUDIOS</strong> </a> los mejores super heroes</span></p>
-        </section>
-        <section>
-            <h2 class="Armas">Lista de personajes</h2>
-            <ul class="Armas2" id="lista-personajes">
-                <strong>
-                    <li onclick="mostrarImagen('capitan_america.jpg')">Capitan America</li>
-                    <li onclick="mostrarImagen('iron_man.jpg')">Iron Man</li>
-                    <li onclick="mostrarImagen('thor.jpg')">Thor</li>
-                    <li onclick="mostrarImagen('hulk.jpg')">Hulk</li>
-                    <li onclick="mostrarImagen('spider_man.jpg')">Spider Man</li>
-                    <li onclick="mostrarImagen('soldado_invierno.jpg')">El soldado del invierno</li>
-                    <li onclick="mostrarImagen('hawkeye.jpg')">Hawkeye</li>
-                    <li onclick="mostrarImagen('black_widow.jpg')">Black Widow</li>
-                    <li onclick="mostrarImagen('loki.jpg')">Loki</li>
-                    <li onclick="mostrarImagen('wolverine.jpg')">Wolverine</li>
-                    <li onclick="mostrarImagen('magneto.jpg')">Magneto</li>
-                    <li onclick="mostrarImagen('bruja_escarlata.jpg')">La bruja escarlata</li>
-                    <li onclick="mostrarImagen('jean_grey.jpg')">Jean Grey</li>
-                    <li onclick="mostrarImagen('charles_xavier.jpg')">Charles Xavier</li>
-                    <li onclick="mostrarImagen('ant_man.jpg')">Ant Man</li>
-                    <li onclick="mostrarImagen('falcon.jpg')">Falcon</li>
-                    <li onclick="mostrarImagen('sentry.jpg')">Sentry</li>
-                    <li onclick="mostrarImagen('star_lord.jpg')">Star Lord</li>
-                    <li onclick="mostrarImagen('rocket.jpg')">Rocket</li>
-                    <li onclick="mostrarImagen('dr_strange.jpg')">Dr Strange</li>
-                    <li onclick="mostrarImagen('black_panter.jpg')">Black Panter</li>
-                    <li onclick="mostrarImagen('vision.jpg')">Visión</li>
-                    <li onclick="mostrarImagen('ultron.jpg')">Ultrón</li>
-                    <li>Etc....</li>
-                </strong>
-            </ul>
-            <div id="imagen-personaje"></div>
+    <!-- ══ STATS BAR ════════════════════════════════════════ -->
+    <div class="stats-bar">
+        <div class="stat"><span class="stat-n">23+</span><span class="stat-l">Personajes</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-n">7</span><span class="stat-l">Armas icónicas</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-n">10</span><span class="stat-l">Habilidades</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-n">∞</span><span class="stat-l">Poder</span></div>
+    </div>
 
-            <figure>
+    <!-- ══ PERSONAJES ═══════════════════════════════════════ -->
+    <section id="personajes" class="seccion">
+        <div class="seccion-header">
+            <span class="eyebrow">Universo Cinematográfico Marvel</span>
+            <h2>Lista de personajes</h2>
+            <p class="seccion-sub">Haz clic en cualquier personaje para ver su imagen.</p>
+        </div>
 
-                <img src="https://usagif.com/wp-content/uploads/gifs/gif-marvel-91.gif" alt="Los heroes más poderosos del planeta">
+        <!-- Buscador de personajes -->
+        <div class="buscador-heroes">
+            <input type="text" id="buscador-input" class="buscador-campo" placeholder="🔍 Buscar personaje..." oninput="filtrarPersonajes()">
+        </div>
 
-                <figcaption>Los super <em>heroes</em> más <strong>poderosos</strong> del planeta</figcaption>
-            </figure>
-            <h3 class="espada">Armas</h3>
-            <ol class="list">
-                <strong> <li>Arcos</li>
-                <li>Espadas</li>
-                <li>Trajes con super tecnologia</li>
-                <li>Escudos</li>
-                <li>Hacha</li>
-                <li>Martillo</li>
-                <li>Rifles, pistolas etc...</li>  </strong>
-            </ol>
-            <figure>
-                <img src=" https://ae01.alicdn.com/kf/HTB1PKpHXCMmBKNjSZTEq6ysKpXai.jpg_640x640q90.jpg " alt="Algunas de las armas dentro del UCM" class="marvel">
-                <figcaption>Las pueden ver aquí</figcaption>
-            </figure>
-            <h3 class="Habilidades">Habilidades</h3>
-            <ul class="lista">
-                <strong> <li>Volar</li>
-                <li>Super Fuerza</li>
-                <li>Gran Velocidad</li>
-                <li>Poderes de rayos</li>
-                <li>Magia</li>
-                <li>Telepatia</li>
-                <li>Telequinesis</li>
-                <li>Factor curativo o regenerativo</li>
-                <li>Varios estilos de combates</li>
-                <li>Otras más....</li> </strong>
-            </ul>
+        <!-- Grid de tarjetas -->
+        <div class="heroes-grid" id="heroes-grid">
+            <!-- Se genera con JS -->
+        </div>
 
-            <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Marvel_Studios_logo.jpg" alt="El logo de MARVEL" class="marvel">
-            <a href=" https://www.marvel.com/" target="_blank"> MARVEL</a>
-        </section>
-        <section>
+        <!-- Panel de detalle del personaje -->
+        <div id="panel-personaje" class="panel-personaje" style="display:none;">
+            <button class="panel-cerrar" onclick="cerrarPanel()">✕ Cerrar</button>
+            <div class="panel-imagen" id="panel-img"></div>
+            <div class="panel-info">
+                <h3 id="panel-nombre"></h3>
+                <p id="panel-equipo" class="panel-equipo-badge"></p>
+                <p id="panel-poder" class="panel-poder"></p>
+                <p id="panel-desc" class="panel-desc"></p>
+            </div>
+        </div>
+    </section>
 
-            <h4>
-                <form action="https://www.marvel.com/movies">
-                    <fieldset>
-                        <legend>¿Para tí, quien es el vengador más poderoso?</legend>
-                        <input class="Armas2" type="radio" id="Thor" value="Poder del rayo" name="Thor Odison"><span class="Armas3">Thor</span></input>
-                        <input class="Armas2" type="radio" id="La bruja escarlata" value="Magia del caos" name="Wanda Maximoff"><span class="Armas3">La bruja escarlata</span></input>
-                        <input class="Armas2" type="radio" id="Doctor Strange" value="El ojo de agamotto" name="Steve Strange"><span class="Armas3">Doctor Strange</span>
-                        </input>
-                        <div class="hover-image-display"></div>
-                    </fieldset>
-                    <fieldset>
-                        <legend>¿Quien fue el primer vengador?</legend>
-                        <input class="Armas2" type="radio" id="Capitan America" value="El escudo de America" name="Steve Rogers"><span class="Armas3">Capitan America</span></input>
-                        <input class="Armas2" type="radio" id="Iron Man" value="Tecnologia grado A+" name="Tony Stark"><span class="Armas3">Iron Man</span></input>
-                        <input class="Armas2" type="radio" id="Capitana Marvel" value="Poder Cosmico" name="Carol Danvers"><span class="Armas3">Capitana Marvel</span></input>
-                        <div class="hover-image-display-2"></div>
-                    </fieldset>
+    <!-- ══ ARMAS ════════════════════════════════════════════ -->
+    <section id="armas" class="seccion seccion-oscura">
+        <div class="seccion-header">
+            <span class="eyebrow eyebrow-rojo">Arsenales del UCM</span>
+            <h2>Armas legendarias</h2>
+        </div>
+        <div class="armas-grid">
+            <div class="arma-card">
+                <div class="arma-emoji">🔨</div>
+                <h3>Mjolnir</h3>
+                <p>El martillo de Thor, forjado en el corazón de una estrella moribunda. Solo el digno puede levantarlo.</p>
+            </div>
+            <div class="arma-card">
+                <div class="arma-emoji">🛡️</div>
+                <h3>Escudo de Vibranium</h3>
+                <p>El escudo del Capitán América, indestructible y perfecto para el combate.</p>
+            </div>
+            <div class="arma-card">
+                <div class="arma-emoji">🏹</div>
+                <h3>Arco de Hawkeye</h3>
+                <p>Arco de alta tecnología con flechas de propósito especial. Puntería 100%.</p>
+            </div>
+            <div class="arma-card">
+                <div class="arma-emoji">⚡</div>
+                <h3>Stormbreaker</h3>
+                <p>El hacha forjada para Thor en Nidavellir. Capaz de invocar el Bifrost.</p>
+            </div>
+            <div class="arma-card">
+                <div class="arma-emoji">🤖</div>
+                <h3>Armadura Iron Man</h3>
+                <p>Traje de tecnología Stark con IA integrada, propulsores y armamento de grado militar.</p>
+            </div>
+            <div class="arma-card">
+                <div class="arma-emoji">💎</div>
+                <h3>Gema del Tiempo</h3>
+                <p>El Ojo de Agamotto contiene la Gema del Tiempo. En manos del Dr. Strange es casi omnipotente.</p>
+            </div>
+            <div class="arma-card">
+                <div class="arma-emoji">🗡️</div>
+                <h3>Garras de Adamantium</h3>
+                <p>Las garras retráctiles de Wolverine, recubiertas en el metal más resistente conocido.</p>
+            </div>
+        </div>
+    </section>
 
-                    <fieldset>
-                        <legend>¿Para tí quien es el mejor super-heroe? </legend>
-                        <input class="Sans-Serif" id="Spider Man" type="checkbox" name="Sentido Aracnido" value="Spider Man"><label for="Spider Man"><span class="Armas3">Spider Man</span></label>
-                        <input class="Sans-Serif" id="Wolverine" type="checkbox" name="Regeneración" value="Wolverine"><label for="Wolverine"><span class="Armas3">Wolverine</span></label>
-                        <input class="Sans-Serif" id="Iron Man" type="checkbox" name="Genio, playboy, millonario" value="Iron Man"><label for="Iron Man"><span class="Armas3">Iron man</span></label>
-                        <input class="Sans-Serif" id="Deadpool" type="checkbox" name="Inmortalidad" value="Deadpool"><label for="Deadpool"><span class="Armas3">Deadpool</span></label>
-                        <input class="Sans-Serif" id="Hulk" type="checkbox" name="Aplastar" value="Hulk"><label for="Hulk"><span class="Armas3">Hulk</span></label>
-                        <input class="Sans-Serif" id="Capitan America" type="checkbox" name="Un buen hombre" value="Capitan America"><label for="Capitan America"><span class="Armas3">Capitan America</span></label>
-                        <input class="Sans-Serif" id="Thor" type="checkbox" name="El dios del trueno" value="Thor"> <label for="Thor"><span class="Armas3">Thor</span></label>
-                        <div class="hover-image-display-3"></div>
-                    </fieldset>
+    <!-- ══ HABILIDADES ══════════════════════════════════════ -->
+    <section id="habilidades" class="seccion">
+        <div class="seccion-header">
+            <span class="eyebrow">Poderes del UCM</span>
+            <h2>Habilidades especiales</h2>
+        </div>
+        <div class="habilidades-grid">
+            <div class="habilidad-item" style="--c:#3b82f6">
+                <div class="hab-icono">✈️</div>
+                <span>Volar</span>
+            </div>
+            <div class="habilidad-item" style="--c:#ef4444">
+                <div class="hab-icono">💪</div>
+                <span>Super Fuerza</span>
+            </div>
+            <div class="habilidad-item" style="--c:#f59e0b">
+                <div class="hab-icono">⚡</div>
+                <span>Gran Velocidad</span>
+            </div>
+            <div class="habilidad-item" style="--c:#8b5cf6">
+                <div class="hab-icono">🔮</div>
+                <span>Magia</span>
+            </div>
+            <div class="habilidad-item" style="--c:#06b6d4">
+                <div class="hab-icono">🧠</div>
+                <span>Telepatía</span>
+            </div>
+            <div class="habilidad-item" style="--c:#ec4899">
+                <div class="hab-icono">🌀</div>
+                <span>Telequinesis</span>
+            </div>
+            <div class="habilidad-item" style="--c:#10b981">
+                <div class="hab-icono">💚</div>
+                <span>Regeneración</span>
+            </div>
+            <div class="habilidad-item" style="--c:#f97316">
+                <div class="hab-icono">🥊</div>
+                <span>Combate experto</span>
+            </div>
+            <div class="habilidad-item" style="--c:#6366f1">
+                <div class="hab-icono">🌩️</div>
+                <span>Control del rayo</span>
+            </div>
+            <div class="habilidad-item" style="--c:#14b8a6">
+                <div class="hab-icono">🕸️</div>
+                <span>Sentido arácnido</span>
+            </div>
+        </div>
+    </section>
 
+    <!-- ══ EQUIPOS ══════════════════════════════════════════ -->
+    <section id="equipo" class="seccion seccion-gris">
+        <div class="seccion-header">
+            <span class="eyebrow">Facciones del UCM</span>
+            <h2>Equipos y grupos</h2>
+        </div>
+        <div class="equipos-tabs">
+            <button class="tab-btn activo" onclick="cambiarTab('vengadores')">Los Vengadores</button>
+            <button class="tab-btn" onclick="cambiarTab('xmen')">X-Men</button>
+            <button class="tab-btn" onclick="cambiarTab('guardianes')">Guardianes</button>
+            <button class="tab-btn" onclick="cambiarTab('villanos')">Villanos</button>
+        </div>
+        <div class="tab-content" id="tab-vengadores">
+            <div class="equipo-lista">
+                <span class="equipo-tag">Capitán América</span>
+                <span class="equipo-tag">Iron Man</span>
+                <span class="equipo-tag">Thor</span>
+                <span class="equipo-tag">Hulk</span>
+                <span class="equipo-tag">Black Widow</span>
+                <span class="equipo-tag">Hawkeye</span>
+                <span class="equipo-tag">Ant Man</span>
+                <span class="equipo-tag">Visión</span>
+                <span class="equipo-tag">Falcon</span>
+                <span class="equipo-tag">Bruja Escarlata</span>
+            </div>
+            <p class="equipo-desc">Fundados para defender la Tierra de amenazas que ningún héroe podría enfrentar solo. "Vengadores, ¡Reúnanse!"</p>
+        </div>
+        <div class="tab-content oculto" id="tab-xmen">
+            <div class="equipo-lista">
+                <span class="equipo-tag azul">Wolverine</span>
+                <span class="equipo-tag azul">Jean Grey</span>
+                <span class="equipo-tag azul">Charles Xavier</span>
+                <span class="equipo-tag azul">Magneto</span>
+                <span class="equipo-tag azul">Cíclope</span>
+                <span class="equipo-tag azul">Tormenta</span>
+            </div>
+            <p class="equipo-desc">Mutantes liderados por el Prof. Xavier, que luchan por la paz entre humanos y mutantes.</p>
+        </div>
+        <div class="tab-content oculto" id="tab-guardianes">
+            <div class="equipo-lista">
+                <span class="equipo-tag verde">Star Lord</span>
+                <span class="equipo-tag verde">Rocket</span>
+                <span class="equipo-tag verde">Groot</span>
+                <span class="equipo-tag verde">Gamora</span>
+                <span class="equipo-tag verde">Drax</span>
+                <span class="equipo-tag verde">Nebula</span>
+            </div>
+            <p class="equipo-desc">Un grupo de inadaptados galácticos que de alguna forma salvan el universo una y otra vez.</p>
+        </div>
+        <div class="tab-content oculto" id="tab-villanos">
+            <div class="equipo-lista">
+                <span class="equipo-tag rojo">Thanos</span>
+                <span class="equipo-tag rojo">Ultrón</span>
+                <span class="equipo-tag rojo">Loki</span>
+                <span class="equipo-tag rojo">Magneto</span>
+                <span class="equipo-tag rojo">Hela</span>
+                <span class="equipo-tag rojo">Kang</span>
+            </div>
+            <p class="equipo-desc">Antagonistas que desafían a los héroes al límite. Algunos buscan poder, otros creen tener razón.</p>
+        </div>
+    </section>
 
-                    <label> <input  type="text" placeholder="MARVEL movies URL" name="MarvelURL" required><button type="Buscar">Buscar</button> </label>
+    <!-- ══ TRIVIA ═══════════════════════════════════════════ -->
+    <section id="trivia" class="seccion seccion-oscura">
+        <div class="seccion-header">
+            <span class="eyebrow eyebrow-rojo">Pon a prueba tu conocimiento</span>
+            <h2>Trivia Marvel</h2>
+        </div>
+        <div class="trivia-box" id="trivia-box">
+            <div class="trivia-progreso">
+                <div class="trivia-barra" id="trivia-barra" style="width:0%"></div>
+            </div>
+            <p class="trivia-contador" id="trivia-contador">Pregunta 1 de 6</p>
+            <p class="trivia-pregunta" id="trivia-pregunta"></p>
+            <div class="trivia-opciones" id="trivia-opciones"></div>
+            <div class="trivia-resultado" id="trivia-resultado" style="display:none;"></div>
+            <div class="trivia-puntaje" id="trivia-final" style="display:none;">
+                <h3 id="trivia-score-texto"></h3>
+                <button class="btn-rojo" onclick="reiniciarTrivia()">Jugar de nuevo</button>
+            </div>
+        </div>
+    </section>
 
-                </form>
+    <!-- ══ FORMULARIO ENCUESTA ══════════════════════════════ -->
+    <section class="seccion">
+        <div class="seccion-header">
+            <span class="eyebrow">¿Cuál es tu opinión?</span>
+            <h2>Encuesta Marvel</h2>
+        </div>
+        <div class="encuesta-card">
+            <form onsubmit="enviarEncuesta(event)">
 
-            </h4>
+                <fieldset class="encuesta-fieldset">
+                    <legend>¿Quién es el vengador más poderoso?</legend>
+                    <div class="radio-grupo">
+                        <label class="radio-label">
+              <input type="radio" name="poderoso" value="Thor"> Thor
+            </label>
+                        <label class="radio-label">
+              <input type="radio" name="poderoso" value="Bruja Escarlata"> Bruja Escarlata
+            </label>
+                        <label class="radio-label">
+              <input type="radio" name="poderoso" value="Dr Strange"> Doctor Strange
+            </label>
+                        <label class="radio-label">
+              <input type="radio" name="poderoso" value="Capitana Marvel"> Capitana Marvel
+            </label>
+                    </div>
+                </fieldset>
 
-        </section>
+                <fieldset class="encuesta-fieldset">
+                    <legend>¿Quién fue el primer vengador?</legend>
+                    <div class="radio-grupo">
+                        <label class="radio-label">
+              <input type="radio" name="primero" value="Capitán América"> Capitán América
+            </label>
+                        <label class="radio-label">
+              <input type="radio" name="primero" value="Iron Man"> Iron Man
+            </label>
+                        <label class="radio-label">
+              <input type="radio" name="primero" value="Capitana Marvel"> Capitana Marvel
+            </label>
+                    </div>
+                </fieldset>
 
-    </main>
+                <fieldset class="encuesta-fieldset">
+                    <legend>¿Cuáles son tus superhéroes favoritos? (puedes elegir varios)</legend>
+                    <div class="check-grupo">
+                        <label class="check-label"><input type="checkbox" value="Spider Man"> Spider Man</label>
+                        <label class="check-label"><input type="checkbox" value="Wolverine"> Wolverine</label>
+                        <label class="check-label"><input type="checkbox" value="Iron Man"> Iron Man</label>
+                        <label class="check-label"><input type="checkbox" value="Deadpool"> Deadpool</label>
+                        <label class="check-label"><input type="checkbox" value="Hulk"> Hulk</label>
+                        <label class="check-label"><input type="checkbox" value="Thor"> Thor</label>
+                        <label class="check-label"><input type="checkbox" value="Capitán América"> Capitán América</label>
+                        <label class="check-label"><input type="checkbox" value="Black Widow"> Black Widow</label>
+                    </div>
+                </fieldset>
 
+                <fieldset class="encuesta-fieldset">
+                    <legend>¿Cuál es tu película Marvel favorita?</legend>
+                    <select class="campo-select" name="pelicula">
+            <option value="">Selecciona una película...</option>
+            <option value="Avengers Endgame">Avengers: Endgame</option>
+            <option value="Infinity War">Avengers: Infinity War</option>
+            <option value="Spider Man No Way Home">Spider-Man: No Way Home</option>
+            <option value="Thor Ragnarok">Thor: Ragnarok</option>
+            <option value="Black Panther">Black Panther</option>
+            <option value="Iron Man">Iron Man (2008)</option>
+            <option value="Deadpool">Deadpool &amp; Wolverine</option>
+          </select>
+                </fieldset>
+
+                <fieldset class="encuesta-fieldset">
+                    <legend>Escribe tu héroe o villano favorito que no esté en la lista:</legend>
+                    <input type="text" class="campo-input" placeholder="Ej: Shang Chi, Moon Knight..." name="otro">
+                </fieldset>
+
+                <button type="submit" class="btn-rojo btn-encuesta">Enviar respuestas</button>
+            </form>
+            <div id="encuesta-resultado" class="encuesta-ok" style="display:none;"></div>
+        </div>
+    </section>
+
+    <!-- ══ FOOTER ═══════════════════════════════════════════ -->
+    <footer class="footer">
+        <div class="footer-logo">⚡ MARVEL</div>
+        <p class="footer-txt">Sitio de aprendizaje creado con ❤️ por</p>
+        <p class="footer-autor">
+            <a href="https://www.facebook.com/profile.php?id=100011652902667" target="_blank">Manuel Elías Pérez Lebrón</a>
+        </p>
+        <p class="footer-copy">Contenido no oficial · Solo con fines educativos · © 2025</p>
+        <a href="https://www.marvel.com/" target="_blank" class="btn-outline footer-link">Visitar Marvel.com ↗</a>
+    </footer>
+
+    <!-- ══ JAVASCRIPT ═══════════════════════════════════════ -->
     <script>
-        // Mapeo de nombres de archivo a URLs reales (puedes usar URLs de internet aquí)
+        /* ────── DATOS DE PERSONAJES ────── */
+        const personajes = [{
+            id: 'capitan_america',
+            nombre: 'Capitán América',
+            equipo: 'Vengadores',
+            poder: 'Superfuerza + Escudo de Vibranium',
+            desc: 'Steve Rogers, el primer vengador. Un hombre fuera de su tiempo con el corazón más puro del UCM.'
+        }, {
+            id: 'iron_man',
+            nombre: 'Iron Man',
+            equipo: 'Vengadores',
+            poder: 'Armadura con IA + Genio inventor',
+            desc: 'Tony Stark, genio, millonario y filántropo. "Yo soy Iron Man."'
+        }, {
+            id: 'thor',
+            nombre: 'Thor',
+            equipo: 'Vengadores',
+            poder: 'Control del rayo + Mjolnir + Stormbreaker',
+            desc: 'El dios asgardiano del trueno, hijo de Odín. Uno de los seres más poderosos del UCM.'
+        }, {
+            id: 'hulk',
+            nombre: 'Hulk',
+            equipo: 'Vengadores',
+            poder: 'Fuerza ilimitada + Regeneración',
+            desc: 'Bruce Banner, científico que se convierte en una bestia verde imparable cuando se enoja.'
+        }, {
+            id: 'spider_man',
+            nombre: 'Spider-Man',
+            equipo: 'Vengadores',
+            poder: 'Sentido arácnido + Telarañas',
+            desc: 'Peter Parker, el vecino amigable arácnido de Queens. Joven héroe con gran responsabilidad.'
+        }, {
+            id: 'soldado_invierno',
+            nombre: 'Soldado de Invierno',
+            equipo: 'Vengadores',
+            poder: 'Brazo biónico + Combate experto',
+            desc: 'Bucky Barnes, el mejor amigo de Cap, convertido en arma por HYDRA.'
+        }, {
+            id: 'hawkeye',
+            nombre: 'Hawkeye',
+            equipo: 'Vengadores',
+            poder: 'Puntería perfecta + Arco táctico',
+            desc: 'Clint Barton, el Vengador más humano. Sin poderes, pero nunca falla un tiro.'
+        }, {
+            id: 'black_widow',
+            nombre: 'Black Widow',
+            equipo: 'Vengadores',
+            poder: 'Espía maestra + Combate cuerpo a cuerpo',
+            desc: 'Natasha Romanoff, ex espía rusa convertida en heroína. Habilidades sin igual.'
+        }, {
+            id: 'loki',
+            nombre: 'Loki',
+            equipo: 'Villanos',
+            poder: 'Magia + Ilusiones',
+            desc: 'El dios asgardiano del engaño. Hermano adoptivo de Thor y antihéroe del UCM.'
+        }, {
+            id: 'wolverine',
+            nombre: 'Wolverine',
+            equipo: 'X-Men',
+            poder: 'Garras de adamantium + Factor curativo',
+            desc: 'Logan, el Inmortal. Factor de curación sobrehumano y garras de metal imposibles de romper.'
+        }, {
+            id: 'magneto',
+            nombre: 'Magneto',
+            equipo: 'X-Men',
+            poder: 'Control total del magnetismo',
+            desc: 'Erik Lehnsherr, el señor del magnetismo. Antagonista y a veces aliado de los X-Men.'
+        }, {
+            id: 'bruja_escarlata',
+            nombre: 'Bruja Escarlata',
+            equipo: 'Vengadores',
+            poder: 'Magia del caos + Manipulación de la realidad',
+            desc: 'Wanda Maximoff, posiblemente el ser más poderoso del UCM. Su magia dobla la realidad.'
+        }, {
+            id: 'jean_grey',
+            nombre: 'Jean Grey',
+            equipo: 'X-Men',
+            poder: 'Telequinesis + Telepatía + Fuerza Fénix',
+            desc: 'Mutante omega cuyo poder se fusiona con la entidad cósmica Fénix. Prácticamente divina.'
+        }, {
+            id: 'charles_xavier',
+            nombre: 'Charles Xavier',
+            equipo: 'X-Men',
+            poder: 'Telepatía omega',
+            desc: 'El Prof. X, el telepata más poderoso del mundo y fundador de los X-Men.'
+        }, {
+            id: 'ant_man',
+            nombre: 'Ant-Man',
+            equipo: 'Vengadores',
+            poder: 'Cambio de tamaño + Comunicación con insectos',
+            desc: 'Scott Lang, un ladrón con buen corazón que hereda el traje del Hombre Hormiga.'
+        }, {
+            id: 'falcon',
+            nombre: 'Falcon',
+            equipo: 'Vengadores',
+            poder: 'Traje con alas + Drones Redwing',
+            desc: 'Sam Wilson, el nuevo Capitán América. Exmilitar con instinto heroico natural.'
+        }, {
+            id: 'sentry',
+            nombre: 'Sentry',
+            equipo: 'Vengadores',
+            poder: 'Fuerza de un millón de soles en explosión',
+            desc: 'Bob Reynolds, el héroe más poderoso de Marvel. Su lado oscuro, el Vacío, es igual de peligroso.'
+        }, {
+            id: 'star_lord',
+            nombre: 'Star-Lord',
+            equipo: 'Guardianes',
+            poder: 'Pistolas de energía + Herencia celestial',
+            desc: 'Peter Quill, mitad humano mitad celestial. Líder accidental (y caótico) de los Guardianes.'
+        }, {
+            id: 'rocket',
+            nombre: 'Rocket',
+            equipo: 'Guardianes',
+            poder: 'Armas pesadas + Ingenio táctico',
+            desc: 'Un mapache modificado genéticamente con talento para las armas y el sarcasmo.'
+        }, {
+            id: 'dr_strange',
+            nombre: 'Dr. Strange',
+            equipo: 'Vengadores',
+            poder: 'Magia + Control del tiempo + Multiverso',
+            desc: 'Stephen Strange, el Hechicero Supremo. Guardián de las artes místicas de la Tierra.'
+        }, {
+            id: 'black_panter',
+            nombre: 'Black Panther',
+            equipo: 'Vengadores',
+            poder: 'Traje de Vibranium + Superfuerza',
+            desc: 'T\'Challa, rey de Wakanda y guardián del metal más resistente del planeta.'
+        }, {
+            id: 'vision',
+            nombre: 'Visión',
+            equipo: 'Vengadores',
+            poder: 'Gema de la mente + Densidad variable',
+            desc: 'Androide creado por Ultrón y los Vengadores. Portador de la Gema de la Mente.'
+        }, {
+            id: 'ultron',
+            nombre: 'Ultrón',
+            equipo: 'Villanos',
+            poder: 'IA + Cuerpo de Vibranium',
+            desc: 'IA creada por Tony Stark que decidió que la paz requería la extinción humana.'
+        }, ];
+
         const imagenURLs = {
-            'capitan_america.jpg': 'https://i.blogs.es/942126/captain-america-civil-war-chris-evans/840_560.jpeg',
-            'iron_man.jpg': 'https://hips.hearstapps.com/hmg-prod/images/iron-man-2008-1626678790.jpeg',
-            'thor.jpg': 'https://media.vandalsports.com/i/640x360/11-2025/20251112154417_1.jpg',
-            'hulk.jpg': 'https://fwcdn.pl/nph/1985708/2023/45861_1.8.jpg',
-            'spider_man.jpg': 'https://i.ytimg.com/vi/8Z6RNjS_ZSY/sddefault.jpg',
-            'soldado_invierno.jpg': 'https://hips.hearstapps.com/hmg-prod/images/mv5bmjmwmdi3mzg0m15bml5banbnxkftztgwntqwmdm0mteat-v1-1576179598.jpg?crop=0.668xw:1.00xh;0.182xw,0&resize=640:*',
-            'hawkeye.jpg': 'https://tierragamer.com/wp-content/uploads/2021/07/hawkeye.jpg',
-            'black_widow.jpg': 'https://i.blogs.es/161082/marvel-black-widow-movie/450_1000.jpeg',
-            'loki.jpg': 'https://i0.wp.com/teamgeek.mx/wp-content/uploads/2023/11/final-loki-temporada-2.webp?fit=1200%2C675&ssl=1',
-            'wolverine.jpg': 'https://i0.wp.com/tomatazos.buscafs.com/2025/07/nuevo-wolverine-en-mcu.jpg',
-            'magneto.jpg': 'https://www.univision.com/_next/image?url=https%3A%2F%2Fst1.uvnimg.com%2Fa7%2F7e%2F0627bbf94f3e8e14b168777e888f%2Fian-mckellen-magneto-grosby.jpg&w=1280&q=75',
-            'bruja_escarlata.jpg': 'https://media.vandalsports.com/master/7-2022/202271815330_1.jpg',
-            'jean_grey.jpg': 'https://m.media-amazon.com/images/M/MV5BMzhjMTM4M2MtMTg3Ny00ZjhkLWFjMTQtNmRhMDU2YzcyNmQ3XkEyXkFqcGdeQWFybm8@._V1_.jpg',
-            'charles_xavier.jpg': 'https://images2.minutemediacdn.com/image/upload/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/shape/cover/sport/all_professor_x_scenes__charles_xavier____doctor_strange_in_the_multiverse_of_madness__4k_hd_imax_-adcd496c168ded8d0ffe063fa9656b41.jpg',
-            'ant_man.jpg': 'https://hips.hearstapps.com/hmg-prod/images/ant-man-quantumania-ciencia-marvel-1676622947.jpg?crop=0.440xw:1.00xh;0.263xw,0&resize=640:*',
-            'falcon.jpg': 'https://images4.alphacoders.com/114/1144252.jpg',
-            'sentry.jpg': 'https://wl-genial.cf.tsp.li/resize/728x/jpg/359/56d/747d6256d581e96dd214a6b40d.jpg',
-            'star_lord.jpg': 'https://elcomercio.pe/resizer/v2/N6AHTE2Q3VGRJB4GTMXY6Q2HMY.jpg?auth=699b0596737b18e8bca04b3b40580a5d5f719aa5ddd5903182d25cbfe29a3667&width=950&height=475&quality=75&smart=true',
-            'rocket.jpg': 'https://static0.polygonimages.com/wordpress/wp-content/uploads/chorus/uploads/chorus_asset/file/24632833/james_gunn_talks_about_the_importance_of_rocket_raccoon_in_gaurdains_of_the_galaxy_vol_3.jpeg',
-            'dr_strange.jpg': 'https://static.posters.cz/image/1300/fotomurales/marvel-doctor-strange-10900-i55654.jpg',
-            'black_panter.jpg': 'https://tumbaabierta.com/wp-content/uploads/2018/02/black_panther-2.jpg',
-            'vision.jpg': 'https://cdn.marvel.com/content/2x/013vis_ons_cut_mob_01_1.jpg',
-            'ultron.jpg': 'https://cdn.marvel.com/content/2x/061ult_ons_mas_mob_01_0.jpg',
+            'capitan_america': 'https://i.blogs.es/942126/captain-america-civil-war-chris-evans/840_560.jpeg',
+            'iron_man': 'https://hips.hearstapps.com/hmg-prod/images/iron-man-2008-1626678790.jpeg',
+            'thor': 'https://media.vandalsports.com/i/640x360/11-2025/20251112154417_1.jpg',
+            'hulk': 'https://fwcdn.pl/nph/1985708/2023/45861_1.8.jpg',
+            'spider_man': 'https://i.ytimg.com/vi/8Z6RNjS_ZSY/sddefault.jpg',
+            'soldado_invierno': 'https://hips.hearstapps.com/hmg-prod/images/mv5bmjmwmdi3mzg0m15bml5banbnxkftztgwntqwmdm0mteat-v1-1576179598.jpg?crop=0.668xw:1.00xh;0.182xw,0&resize=640:*',
+            'hawkeye': 'https://tierragamer.com/wp-content/uploads/2021/07/hawkeye.jpg',
+            'black_widow': 'https://i.blogs.es/161082/marvel-black-widow-movie/450_1000.jpeg',
+            'loki': 'https://i0.wp.com/teamgeek.mx/wp-content/uploads/2023/11/final-loki-temporada-2.webp?fit=1200%2C675&ssl=1',
+            'wolverine': 'https://i0.wp.com/tomatazos.buscafs.com/2025/07/nuevo-wolverine-en-mcu.jpg',
+            'magneto': 'https://www.univision.com/_next/image?url=https%3A%2F%2Fst1.uvnimg.com%2Fa7%2F7e%2F0627bbf94f3e8e14b168777e888f%2Fian-mckellen-magneto-grosby.jpg&w=1280&q=75',
+            'bruja_escarlata': 'https://media.vandalsports.com/master/7-2022/202271815330_1.jpg',
+            'jean_grey': 'https://m.media-amazon.com/images/M/MV5BMzhjMTM4M2MtMTg3Ny00ZjhkLWFjMTQtNmRhMDU2YzcyNmQ3XkEyXkFqcGdeQWFybm8@._V1_.jpg',
+            'charles_xavier': 'https://images2.minutemediacdn.com/image/upload/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/shape/cover/sport/all_professor_x_scenes__charles_xavier____doctor_strange_in_the_multiverse_of_madness__4k_hd_imax_-adcd496c168ded8d0ffe063fa9656b41.jpg',
+            'ant_man': 'https://hips.hearstapps.com/hmg-prod/images/ant-man-quantumania-ciencia-marvel-1676622947.jpg?crop=0.440xw:1.00xh;0.263xw,0&resize=640:*',
+            'falcon': 'https://images4.alphacoders.com/114/1144252.jpg',
+            'sentry': 'https://wl-genial.cf.tsp.li/resize/728x/jpg/359/56d/747d6256d581e96dd214a6b40d.jpg',
+            'star_lord': 'https://elcomercio.pe/resizer/v2/N6AHTE2Q3VGRJB4GTMXY6Q2HMY.jpg?auth=699b0596737b18e8bca04b3b40580a5d5f719aa5ddd5903182d25cbfe29a3667&width=950&height=475&quality=75&smart=true',
+            'rocket': 'https://static0.polygonimages.com/wordpress/wp-content/uploads/chorus/uploads/chorus_asset/file/24632833/james_gunn_talks_about_the_importance_of_rocket_raccoon_in_gaurdains_of_the_galaxy_vol_3.jpeg',
+            'dr_strange': 'https://static.posters.cz/image/1300/fotomurales/marvel-doctor-strange-10900-i55654.jpg',
+            'black_panter': 'https://tumbaabierta.com/wp-content/uploads/2018/02/black_panther-2.jpg',
+            'vision': 'https://cdn.marvel.com/content/2x/013vis_ons_cut_mob_01_1.jpg',
+            'ultron': 'https://cdn.marvel.com/content/2x/061ult_ons_mas_mob_01_0.jpg',
         };
 
-        function mostrarImagen(nombreArchivo) {
-            // Obtener la URL de la imagen del objeto de mapeo
-            const url = imagenURLs[nombreArchivo];
-
-            // 1. Obtener el elemento DIV donde se mostrará la imagen
-            const divImagen = document.getElementById('imagen-personaje');
-
-            if (url && divImagen) {
-                // 2. Establecer la imagen de fondo y hacer visible el DIV
-                divImagen.style.backgroundImage = `url('${url}')`;
-                divImagen.style.opacity = 1;
-            }
+        /* ────── RENDER DE HEROES ────── */
+        function renderHeroes(lista) {
+            const grid = document.getElementById('heroes-grid');
+            grid.innerHTML = '';
+            lista.forEach(p => {
+                const col = {
+                    'Vengadores': 'rojo',
+                    'X-Men': 'amarillo',
+                    'Guardianes': 'verde',
+                    'Villanos': 'morado'
+                }[p.equipo] || 'rojo';
+                const card = document.createElement('div');
+                card.className = 'heroe-card';
+                card.setAttribute('data-nombre', p.nombre.toLowerCase());
+                card.innerHTML = `
+          <div class="heroe-img" style="background-image:url('${imagenURLs[p.id]}')"></div>
+          <div class="heroe-info">
+            <span class="heroe-equipo tag-${col}">${p.equipo}</span>
+            <h3 class="heroe-nombre">${p.nombre}</h3>
+            <p class="heroe-poder">⚡ ${p.poder}</p>
+          </div>
+        `;
+                card.onclick = () => abrirPanel(p);
+                grid.appendChild(card);
+            });
         }
+        renderHeroes(personajes);
+
+        function filtrarPersonajes() {
+            const q = document.getElementById('buscador-input').value.toLowerCase();
+            const filtrados = personajes.filter(p => p.nombre.toLowerCase().includes(q) || p.equipo.toLowerCase().includes(q));
+            renderHeroes(filtrados);
+        }
+
+        function abrirPanel(p) {
+            document.getElementById('panel-nombre').textContent = p.nombre;
+            document.getElementById('panel-equipo').textContent = p.equipo;
+            document.getElementById('panel-poder').textContent = '⚡ ' + p.poder;
+            document.getElementById('panel-desc').textContent = p.desc;
+            document.getElementById('panel-img').style.backgroundImage = `url('${imagenURLs[p.id]}')`;
+            const panel = document.getElementById('panel-personaje');
+            panel.style.display = 'flex';
+            panel.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+
+        function cerrarPanel() {
+            document.getElementById('panel-personaje').style.display = 'none';
+        }
+
+        /* ────── TABS DE EQUIPOS ────── */
+        function cambiarTab(id) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.add('oculto'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('activo'));
+            document.getElementById('tab-' + id).classList.remove('oculto');
+            event.target.classList.add('activo');
+        }
+
+        /* ────── TRIVIA ────── */
+        const preguntas = [{
+            q: '¿Cuál es el nombre real de Iron Man?',
+            ops: ['Bruce Banner', 'Tony Stark', 'Steve Rogers', 'Peter Parker'],
+            r: 1
+        }, {
+            q: '¿Qué metal forma el escudo del Capitán América?',
+            ops: ['Adamantium', 'Titanio', 'Vibranium', 'Acero'],
+            r: 2
+        }, {
+            q: '¿Quién forjó el Mjolnir de Thor?',
+            ops: ['Enanos de Nidavellir', 'Tony Stark', 'Odín', 'La HYDRA'],
+            r: 0
+        }, {
+            q: '¿Cuántas Gemas del Infinito existen?',
+            ops: ['4', '5', '6', '7'],
+            r: 2
+        }, {
+            q: '¿Cuál es el apellido real de Spider-Man?',
+            ops: ['Parker', 'Stark', 'Rogers', 'Watson'],
+            r: 0
+        }, {
+            q: '¿En qué película dice Tony "Yo soy Iron Man" por última vez?',
+            ops: ['Civil War', 'Endgame', 'Infinity War', 'Iron Man 3'],
+            r: 1
+        }, ];
+
+        let triviaIdx = 0;
+        let triviaPts = 0;
+        let triviaRespondida = false;
+
+        function renderTrivia() {
+            if (triviaIdx >= preguntas.length) {
+                mostrarFinalTrivia();
+                return;
+            }
+            const p = preguntas[triviaIdx];
+            document.getElementById('trivia-pregunta').textContent = p.q;
+            document.getElementById('trivia-contador').textContent = `Pregunta ${triviaIdx+1} de ${preguntas.length}`;
+            document.getElementById('trivia-barra').style.width = (triviaIdx / preguntas.length * 100) + '%';
+            document.getElementById('trivia-resultado').style.display = 'none';
+            const ops = document.getElementById('trivia-opciones');
+            ops.innerHTML = '';
+            triviaRespondida = false;
+            p.ops.forEach((op, i) => {
+                const btn = document.createElement('button');
+                btn.className = 'trivia-btn';
+                btn.textContent = op;
+                btn.onclick = () => responderTrivia(i, p.r, btn);
+                ops.appendChild(btn);
+            });
+        }
+
+        function responderTrivia(elegido, correcto, btn) {
+            if (triviaRespondida) return;
+            triviaRespondida = true;
+            const todos = document.querySelectorAll('.trivia-btn');
+            todos.forEach((b, i) => {
+                b.disabled = true;
+                if (i === correcto) b.classList.add('correcto');
+                else b.classList.add('incorrecto');
+            });
+            const res = document.getElementById('trivia-resultado');
+            if (elegido === correcto) {
+                triviaPts++;
+                res.textContent = '✅ ¡Correcto!';
+                res.className = 'trivia-resultado bien';
+            } else {
+                res.textContent = '❌ Incorrecto. La respuesta era: ' + preguntas[triviaIdx].ops[correcto];
+                res.className = 'trivia-resultado mal';
+            }
+            res.style.display = 'block';
+            setTimeout(() => {
+                triviaIdx++;
+                renderTrivia();
+            }, 1600);
+        }
+
+        function mostrarFinalTrivia() {
+            document.getElementById('trivia-pregunta').textContent = '';
+            document.getElementById('trivia-opciones').innerHTML = '';
+            document.getElementById('trivia-resultado').style.display = 'none';
+            document.getElementById('trivia-contador').textContent = '¡Completado!';
+            document.getElementById('trivia-barra').style.width = '100%';
+            const msgs = ['Sigue estudiando, padawan 😅', 'Nada mal, Vengador en entrenamiento 🦸', '¡Eres un verdadero Vengador! 🏆'];
+            const idx = triviaPts < 3 ? 0 : triviaPts < 5 ? 1 : 2;
+            document.getElementById('trivia-score-texto').textContent = `${triviaPts}/${preguntas.length} — ${msgs[idx]}`;
+            document.getElementById('trivia-final').style.display = 'block';
+        }
+
+        function reiniciarTrivia() {
+            triviaIdx = 0;
+            triviaPts = 0;
+            triviaRespondida = false;
+            document.getElementById('trivia-final').style.display = 'none';
+            renderTrivia();
+        }
+
+        renderTrivia();
+
+        /* ────── ENCUESTA ────── */
+        function enviarEncuesta(e) {
+            e.preventDefault();
+            const poderoso = document.querySelector('input[name="poderoso"]:checked');
+            const primero = document.querySelector('input[name="primero"]:checked');
+            if (!poderoso || !primero) {
+                alert('Por favor responde al menos las dos primeras preguntas.');
+                return;
+            }
+            const favoritos = [...document.querySelectorAll('input[type=checkbox]:checked')].map(c => c.value);
+            const res = document.getElementById('encuesta-resultado');
+            res.style.display = 'block';
+            res.innerHTML = `
+        <h3>✅ ¡Gracias por participar!</h3>
+        <p>Para ti el más poderoso es <strong>${poderoso.value}</strong>.</p>
+        <p>El primer vengador: <strong>${primero.value}</strong>.</p>
+        ${favoritos.length ? `<p>Tus favoritos: <strong>${favoritos.join(', ')}</strong>.</p>` : ''}
+      `;
+      e.target.reset();
+      res.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    /* ────── PARTÍCULAS HERO ────── */
+    (function crearParticulas() {
+      const c = document.getElementById('particles');
+      for (let i = 0; i < 30; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*4}s;animation-duration:${3+Math.random()*4}s;width:${2+Math.random()*4}px;height:${2+Math.random()*4}px;opacity:${0.3+Math.random()*0.5}`;
+        c.appendChild(p);
+      }
+    })();
+
+    /* ────── NAVBAR MOBILE ────── */
+    function toggleNav() {
+      document.querySelector('.nav-links').classList.toggle('open');
+    }
+    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.remove('open');
+    }));
     </script>
 
 </body>
-<footer>
-    <p>No Copyright -
-        <a href="https://www.facebook.com/profile.php?id=100011652902667">Manuel Elías Pérez</a></p>
-</footer>
 
 </html>
